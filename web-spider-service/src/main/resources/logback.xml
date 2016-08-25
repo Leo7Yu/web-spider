@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="false" scanPeriod="60 seconds" debug="false">
+
+    <property name="LOG_PATH" value="/aliyun/logs" />
+
+    <appender name="tutorialLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/spider.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/spider_%d.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{40} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org" level="DEBUG" additivity="false">
+        <appender-ref ref="tutorialLog" />
+    </logger>
+    
+    <logger name="org.springframework" level="INFO" additivity="false">
+        <appender-ref ref="tutorialLog" />
+    </logger>
+    
+    <logger name="org.apache.http" level="INFO" additivity="false">
+        <appender-ref ref="tutorialLog" />
+    </logger>
+    
+    <logger name="edu.uci.ics.crawler4j" level="INFO" additivity="false">
+        <appender-ref ref="tutorialLog" />
+    </logger>
+
+    <logger name="cn.leo" level="DEBUG" additivity="false">
+        <appender-ref ref="tutorialLog" />
+    </logger>
+
+    <root level="DEBUG">
+        <appender-ref ref="tutorialLog" />
+    </root>
+
+</configuration> 
